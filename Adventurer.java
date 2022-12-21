@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Adventurer implements Contract{
+    //Creates an adventurer
     String name;
     int HP;
     String location;
@@ -16,6 +17,7 @@ public class Adventurer implements Contract{
         items.add("Teleporter");}
 
     public void grab(String item){
+        //adds item to inventory
         System.out.println("You have grabbed " + item + "!");
         items.add(item);
         System.out.println("Your inventory currently contains:");
@@ -24,6 +26,7 @@ public class Adventurer implements Contract{
             System.out.println(item_list);}}
 
     public String drop(String item){
+        //removes item from inventory
         System.out.println("You have dropped " + item + "!");
         items.remove(item);
         System.out.println("Your inventory currently contains:") ;
@@ -33,6 +36,7 @@ public class Adventurer implements Contract{
         return item + "has been dropped!";}
 
     public void examine(String item){
+        //prints out a description of the item
         System.out.println("You closely inspect " + item + ".");
         System.out.println("At first it seems to be nothing special, just an ordinary " + item+ ", but then you notice....");
         if ( item == "glowing pebble"){
@@ -55,6 +59,7 @@ public class Adventurer implements Contract{
 
     }   
     public void use(String item){
+        //uses item
         if(item.equals("Healing potion")){
             this.HP += 10;} 
         else if (item.equals("Teleporter")){
@@ -64,6 +69,7 @@ public class Adventurer implements Contract{
 
     }
     public boolean walk(String direction){
+        //returns whether the player moved right
         boolean move_right = true;
         if(direction.equals("left")){
             move_right = false;}
@@ -73,6 +79,7 @@ public class Adventurer implements Contract{
         }
 
     public boolean fly(int x, int y){
+        //returns whether the player moved right
         boolean move_right = true;
         boolean move_up = true;
         if(y>0){
@@ -91,14 +98,17 @@ public class Adventurer implements Contract{
         }
     
     public Number shrink(){
+        //halves your size
         this.size = this.size / 2;
         return size;
     }
     public Number grow(){
+        //doubles your size
         this.size = this.size * 2;
         return size;
     }
     public void rest(){
+        //restores 10 HP
         this.HP += 10;
     }
     public void undo(){
